@@ -18,14 +18,18 @@ import {
 // --- Firebase Configuration & Init ---
 // IMPORTANT: Replace these values with YOUR actual Firebase keys!
 const firebaseConfig = {
-  apiKey: "AIzaSy...", // <-- PASTE YOUR REAL API KEY HERE
-  authDomain: "leaveos-yourname.firebaseapp.com",
-  projectId: "leaveos-yourname",
-  storageBucket: "leaveos-yourname.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abc123def456",
-  measurementId: "G-XYZ123"
+  // Note: Changed process.env -> import.meta.env
+  // Note: Changed REACT_APP_ -> VITE_
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
+
+console.log("Firebase Config Loaded:", firebaseConfig.projectId);
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
